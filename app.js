@@ -8,6 +8,10 @@ const folderRoutes = require('./routes/folderRoutes');
 dotenv.config();
 
 const app = express();
+
+// ✅ Fix for Railway reverse proxy
+app.set("trust proxy", 1);  // <-- This is the key line!
+
 app.use(cors());
 app.use(express.json());
 app.use(rateLimiter);
